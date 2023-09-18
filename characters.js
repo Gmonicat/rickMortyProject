@@ -1,11 +1,23 @@
 let charactersToCompare = []
 
-export function displayCharacters(subpageData,domElements){
+    async function getLastSeenEp (episodeUrl) {
+        const response = await fetch(`${episodeUrl}`)
+        const json = await response.json()
+        return json
+    }
+
+export async function displayCharacters(subpageData,domElements){
     let arrayToDisplay = ""
     domElements.mainContainer.innerHTML = ''
     console.log(arrayToDisplay)
+
     for (var i = 0; i < subpageData.length;i++){
         let character = subpageData[i]
+        let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])
+        console.log(lastSeenEpisode)
+
+        let data = lastSeenEpisode.result
+        console.log(data)
         arrayToDisplay += `
             <div class="col s3">
                 <div class="card">
@@ -16,7 +28,7 @@ export function displayCharacters(subpageData,domElements){
                         <span class=card-title">${character.name}</span>
                         <p>${character.status} - ${character.gender}</p>
                         <p>Last known location: ${character.location.name}</p>
-                        <p>Number of episodes seen: ${character.episode.length+1}</p>
+                        <p>Last seen in episode: ${lastSeenEpisode.name}</p>
                     </div>
                     <div class="card-action">
                             <a class = "compareButton" target="${character.id}" >compare characteres</a>
