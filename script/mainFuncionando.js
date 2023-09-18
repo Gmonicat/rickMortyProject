@@ -1,9 +1,9 @@
-import { navBar } from './navBar.js'
-import { displayHome } from './home.js'
-import { displayCharacters } from './characters.js'
-import { compareCharacters } from './compare.js'
-import { changeButtonText } from './compare.js'
-import { displayEpisodes } from './episode.js'
+import { navBar } from '../script/navBar.js'
+import { displayHome } from '../script/home.js'
+import { displayCharacters } from '../script/characters.js'
+import { compareCharacters } from '../script/compare.js'
+import { changeButtonText } from '../script/compare.js'
+import { displayEpisodes } from '../script/episode.js'
 
 //          ------------- Global Variables ---------------          //
 
@@ -174,7 +174,6 @@ const tools = {
                 pages[actualPage].isSelected = false
                 pages[targetText].isSelected = true
                 
-                console.log(targetText)
                 tools.updateScreen(subPageDisplaying, newPageData.info.pages,targetText)
                 
             }
@@ -270,14 +269,12 @@ const tools = {
             case 'episode':
                 const episodeData= await getElementsToDisplay.episode(selectedPage)
                 data =  episodeData.results
-                console.log(data)
                 displayEpisodes(data,domElements)
                 //renderEpisodes()
             break;
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)
                 data =  locationData.results
-                console.log(data)
             break;
         }
             

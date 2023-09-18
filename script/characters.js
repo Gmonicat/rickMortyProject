@@ -9,17 +9,12 @@ let charactersToCompare = []
 export async function displayCharacters(subpageData,domElements){
     let arrayToDisplay = ""
     domElements.mainContainer.innerHTML = '<div class="charactersContainer"></div>'
-    
-    
-    console.log(arrayToDisplay)
 
     for (var i = 0; i < subpageData.length;i++){
         let character = subpageData[i]
         let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])
-        console.log(lastSeenEpisode)
 
         let data = lastSeenEpisode.result
-        console.log(data)
         arrayToDisplay += ` 
             <div class="col s3">
                 <div class="card">
@@ -44,7 +39,6 @@ export async function displayCharacters(subpageData,domElements){
         button.onclick = () => {
            let charInArray = charactersToCompare.find((char) => char == button.target)
            charInArray ? charactersToCompare.splice(charactersToCompare.indexOf(charInArray), 1) : charactersToCompare.push(button.target)
-           console.log(button.target)
            createCharImg(button.target)
            compareButton.innerText = 'not compare this character'
      }
@@ -52,7 +46,6 @@ export async function displayCharacters(subpageData,domElements){
 
     }
 
-    console.log(arrayToDisplay)
     let elementtoDisplay = document.createElement("div")
     elementtoDisplay.className = "row"
     elementtoDisplay.innerHTML = arrayToDisplay
