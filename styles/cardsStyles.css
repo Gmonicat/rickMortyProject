@@ -1,0 +1,260 @@
+body{
+    margin:0;
+    background-color:rgb(187, 106, 203)
+}
+.header{
+    display:flex;
+    position:sticky;
+    top:0;
+    width:100vw;
+    height:15vh;
+    z-index:-2;
+}
+
+.main{
+    width:100vw;
+    height:85vh;
+}
+
+#cardsSection{
+    height:100%;
+    width:100%;
+    background-color: transparent;
+    /*background-image:URL('../media/RickMortyLogo8-2.png');
+    background-size:contain;
+    background-repeat: no-repeat;*/
+}
+
+.cardsContainer{
+     width: 100%;
+    height: 100%; 
+    display: grid;
+    flex-wrap: wrap;
+    margin-right:auto;
+    margin-left:auto;
+    padding: 20px;
+    column-gap: 20px;
+    row-gap: 20px;
+    
+    background-color: #fff;
+    justify-content: center;
+    border-radius: 30px;  
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Inicialmente, 3 columnas */
+    grid-gap: 2mm;
+   
+    /* display:flex;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+    /*justify-content: center;
+    align-items: center;
+    margin:auto;*/
+}
+.row{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-grow: inherit;
+    width: 92%;
+    height:100%;
+}
+.textTitle1{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size:xx-large;
+    background-color: rgb(255,255,255,0.7);
+    border-color:black;
+    color:black;
+    padding: 0 10px;
+    border-radius:10px;
+}
+
+
+.card{
+    margin:5px !important;
+    background-color:transparent !important;
+
+}
+.custom-card{
+    width:400px !important;
+    height: 250px;
+    box-sizing: border-box !important;
+}
+.cardTitle{
+    display:flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin:auto !important; 
+    top: 0;
+    left: 0;
+    padding: 20px;
+    justify-content:center;
+    align-items:center;
+    font-size: large;
+    box-sizing: border-box;
+    background-image:url(../media/rick-morty-4-bis.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: width 0.5s ease, transform 0.8s, opacity 0.5s ease-in-out;
+    opacity:1;
+    z-index:2;
+}
+.cardContent{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    padding:20px;
+    background-image:url(../media/rick-morty-6-bis.webp);
+    transition: transform 0.8s, opacity 0.5s ease-in-out;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing:border-box;
+    transform:rotateY(-180deg);
+    opacity:0;
+    z-index:2;
+}
+.cardContent ::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index:-1;
+}
+.card:hover .cardTitle{
+    transform:rotateY(180deg);
+    opacity:0
+}
+
+.card:hover .cardContent{
+    transform:rotateY(0deg);
+   opacity:1;
+}
+/* ----------------------------------------------------------------- */
+/*.card2{
+    position:relative;
+    align-items: center;
+    text-align:center;
+    height: 293px;
+    margin:5px;
+}
+.cardTitle2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: brown;
+    background-image:url(../media/rick-morty-2-bis.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition:opacity 1s, transform 3s, height 0.5s;
+    opacity:1;
+    z-index:2;
+}
+.cardContent2{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color: rgb(255, 182, 193);
+    box-sizing:border-box;
+    opacity:1;
+}
+.card2:hover .cardTitle2{
+    transform:translateY(60%);
+    opacity:0;
+    margin:0;
+    height:0;
+    padding:0;
+}
+
+/* -------------------------------------------------------------- */
+
+.card3{
+    position:relative;
+    align-items: center;
+    text-align:center;
+    height: 293px;
+    margin:5px;
+}
+.cardTitle3{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: brown;
+    transition: transform 0.5, opacity 0.5;
+    opacity:1s;
+    z-index:2;
+}
+.cardContent3{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    padding:20px;
+    background-color: red;
+    box-sizing:border-box;
+    transition: opacity 0.5s;
+    opacity:0;
+}
+.card3:hover .cardTitle3{
+    opacity:0
+}
+
+.card3:hover .cardContent3{
+    opacity:1;
+}
+*/
+@media(max-width:1280px){
+    #cardsSection{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+}
+
+@media(max-width: 960px){
+    #cardsSection{
+        grid-template-columns:1fr 1fr;
+    }    
+}
+@media(max-width: 600px){
+    #cardsSection{
+        grid-template-columns:1fr;
+    }    
+}
+
+
+/*@keyframes cardAnimation {
+    0% {
+        transform:rotateY(180deg);
+        opacity:0;
+        transition:0.7s;
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}

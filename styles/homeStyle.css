@@ -5,8 +5,9 @@
 }
 
 #main{
-  background-image: url(./media/rickandmorty2.jpeg);
-  background-position: center;
+  background-image: url(../media/rickandmorty2.jpeg);
+  background-position-y:top;
+  background-position-x:center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -16,7 +17,8 @@
 }
 
 .row {
-  margin: 0 !important;
+  margin-left:0px !important;
+  margin-right: 10px;
   box-sizing: border-box;
 }
 .row .col {

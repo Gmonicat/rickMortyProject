@@ -37,15 +37,6 @@ export const navBar = `
                 <div class="subPagesContainer">
                 </div>
                 <a href="#" class="subPages">></a>
-              
-              
-                <!--  <a href="#" class="subPages"> < </a>
-                <a href="#" class="subPages"> 1 </a>
-                <a href="#" class="subPages"> 2 </a>
-                <a href="#" class="subPages"> 3 </a>
-                <a href="#" class="subPages"> 4 </a>
-                <a href="#" class="subPages"> 5 </a>
-                <a href="#" class="subPages"> > </a>-->
             </div>
             <div class="headerDivisorRight2">
             </div>

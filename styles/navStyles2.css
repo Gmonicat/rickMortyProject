@@ -14,7 +14,6 @@ body{
 #header{
     position:sticky;
     top:0;
-    left:0;
     z-index:100;
     background-color: rgba(148, 68, 68, 0.95);
     display:flex;
@@ -265,12 +264,7 @@ body{
     }
 }
 @media(max-width:600px){
-    .headerDivisorRight1{
-        display:none;
-    }
-    .headerDivisorRight1Bottom{
-        display:flex;
-    }
+
 }
 
 @keyframes searchAnimation {

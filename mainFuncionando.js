@@ -4,7 +4,7 @@ import { displayHome } from './home.js'
 import { displayCharacters } from './characters.js'
 import {createModal} from './modal.js'
 import { displayEpisodes } from './episode.js'
-
+import { addCard,displayCards } from './baseCard.js'
 
 let pages = {
     home:{},
@@ -240,20 +240,28 @@ const tools = {
         if(domElements.dinamicSubPagesContainer[0]){
             domElements.dinamicSubPagesContainer[0].innerHTML = '';
         }
-        
 
         for (let i = subPagesToDisplay.firstRenderedSubPage; i <= subPagesToDisplay.lastRenderedSubPage; i++) {
+            if (i == subPagesToDisplay.firstRenderedSubPage){
+                let element = document.createElement('a');
+                element.classList.add('subPages');
+                element.innerText = i;
+                domElements.dinamicSubPagesContainer[0].appendChild(element);
+            }else{            
+                let element = document.createElement('a');
+                element.classList.add('subPages');
+                element.innerText = i;
+                domElements.dinamicSubPagesContainer[0].appendChild(element);
 
-            let element = document.createElement('a');
-            element.classList.add('subPages');
-            element.innerText = i;
-            domElements.dinamicSubPagesContainer[0].appendChild(element);
+            }
+
         }
     },
 
     displayMainPage: async (selectedPage) => {
         let subPage = pages[selectedPage].lastSubPageActive
         let data
+        domElements.mainContainer.classList.remove('x-space-evenly')
         switch (selectedPage){
             case 'character':
                 const characterData = await getElementsToDisplay.character(selectedPage)
@@ -272,6 +280,8 @@ const tools = {
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)
                 data =  locationData.results
+                domElements.mainContainer.innerHTML=''
+                displayCards(data,domElements)
                 console.log(data)
             break;
         }
