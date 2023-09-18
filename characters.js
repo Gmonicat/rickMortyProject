@@ -8,7 +8,9 @@ let charactersToCompare = []
 
 export async function displayCharacters(subpageData,domElements){
     let arrayToDisplay = ""
-    domElements.mainContainer.innerHTML = ''
+    domElements.mainContainer.innerHTML = '<div class="charactersContainer"></div>'
+    
+    
     console.log(arrayToDisplay)
 
     for (var i = 0; i < subpageData.length;i++){
