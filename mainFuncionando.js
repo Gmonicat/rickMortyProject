@@ -2,6 +2,7 @@
 import {navBar} from './navBar.js'
 import { displayHome } from './home.js'
 import { displayCharacters } from './characters.js'
+import {createModal} from './modal.js'
 
 let pages = {
     home:{},
@@ -46,6 +47,7 @@ const domElements = {
     subPages: {},
     searchInput: {},
     logo: {},
+    charContainer: {},
 
     //episode dom Els
     episodeContainer: {},
@@ -120,6 +122,7 @@ const tools = {
         domElements.pagesContainer = document.getElementsByClassName('headerDivisorLeft1'),
         
         domElements.subPagesOperatorContainer = document.getElementsByClassName('headerDivisorLeft2'),
+        domElements.charContainer = document.getElementsByClassName('headerDivisorRight2'),
         domElements.dinamicSubPagesContainer = document.getElementsByClassName('subPagesContainer')
         domElements.subPages = document.getElementsByClassName('subPages')
         domElements.searchInput =  document.getElementsByClassName('baseInput')
@@ -287,8 +290,8 @@ const tools = {
 
     updateScreen:(selectedSubPage, lastSubPageAvailable, selectedPage)=>{
         if (selectedPage != 'home'){
+            domElements.mainContainer.style.background = 'transparent'
             tools.displayNavbar()
-            
             tools.displayMainPage(selectedPage)
             tools.displaySubPages(selectedSubPage,lastSubPageAvailable)
         }else{
@@ -302,6 +305,7 @@ const tools = {
         domElements.body.innerHTML = navBar 
         domElements.body.appendChild(domElements.mainContainer)
         tools.setupNavbarDOMElements();
+        createModal(domElements)
     }
 }
 
