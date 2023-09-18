@@ -1,6 +1,7 @@
 //          ------------- Global Variables ---------------          //
 import {navBar} from './navBar.js'
 import { displayHome } from './home.js'
+import { displayCharacters } from './characters.js'
 
 let pages = {
     home:{},
@@ -178,9 +179,12 @@ const tools = {
            
            
            let pageToDisplay = e.target.target
+           if (!pageToDisplay) {
+           } else {
            let subpageToDisplay = pages[pageToDisplay].lastSubPageActive
            let lastSubPg = pages[pageToDisplay].data.info.pages 
            tools.updateScreen(subpageToDisplay,lastSubPg,pageToDisplay)
+            }
            
            })
     },
@@ -248,8 +252,8 @@ const tools = {
             case 'character':
                 const characterData = await getElementsToDisplay.character(selectedPage)
                 data =  characterData.results
-                console.log(data)
-
+                displayCharacters(data,domElements)
+                
             break;
 
             case 'episode':
@@ -288,7 +292,7 @@ const tools = {
             tools.displayMainPage(selectedPage)
             tools.displaySubPages(selectedSubPage,lastSubPageAvailable)
         }else{
-        
+            console.log("exitos")
             displayHome(pages,domElements)
             tools.setupHomeDOMElements()
         }
@@ -296,6 +300,7 @@ const tools = {
 
     displayNavbar: () => {
         domElements.body.innerHTML = navBar 
+        domElements.body.appendChild(domElements.mainContainer)
         tools.setupNavbarDOMElements();
     }
 }
