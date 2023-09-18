@@ -22,7 +22,17 @@
     padding-bottom: 20px;
 
 }
-
+.row{
+    height: 100% !important;
+  width: 100% !important; 
+  padding: 20px ;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 30px;
+  justify-content: center;
+}
 .cards{
     position: relative;
     margin-top: 20px;
