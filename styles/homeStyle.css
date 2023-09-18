@@ -6,8 +6,12 @@
 
 #main{
   background-image: url(../media/rickandmorty2.jpeg);
+<<<<<<< HEAD
   background-position-y:top;
   background-position-x:center;
+=======
+  background-position: center;
+>>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -92,19 +96,9 @@ a:hover {
   animation-delay: 0.5s;
 }
 
-.thumbnailChar {
-  height: 1rem;
-  width: 1rem;
-}
-
-.roundSmallImg {
-  height: 0.3rem;
-  width: 0.3rem;
-  border-radius: 50%;
-}
-
-#charList {
-  padding: 1rem;
+.smallImg {
+  height: 40px;
+  width: 40px;
 }
 
 @keyframes borderBlink {
@@ -137,5 +131,9 @@ body {
 }
 
 .small-text {
-  font-size: 10px;
+  font-size: 20px;
+}
+
+.clearButton {
+  animation: borderBlink 0.08s ease-in-out infinite alternate;
 }

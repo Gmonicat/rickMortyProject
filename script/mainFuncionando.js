@@ -1,3 +1,4 @@
+<<<<<<< HEAD:mainFuncionando.js
 //          ------------- Global Variables ---------------          //
 import {navBar} from './navBar.js'
 import { displayHome } from './home.js'
@@ -5,6 +6,16 @@ import { displayCharacters } from './characters.js'
 import {createModal} from './modal.js'
 import { displayEpisodes } from './episode.js'
 import { addCard,displayCards } from './baseCard.js'
+=======
+import { navBar } from '../script/navBar.js'
+import { displayHome } from '../script/home.js'
+import { displayCharacters } from '../script/characters.js'
+import { compareCharacters } from '../script/compare.js'
+import { changeButtonText } from '../script/compare.js'
+import { displayEpisodes } from '../script/episode.js'
+
+//          ------------- Global Variables ---------------          //
+>>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/mainFuncionando.js
 
 let pages = {
     home:{},
@@ -68,6 +79,8 @@ const subPagesOperators = {
     },
     subPagesCap: 6
 }
+
+const charactersToCompare = []
 
 //          ------------- Classes declarations ---------------          //
 
@@ -171,7 +184,6 @@ const tools = {
                 pages[actualPage].isSelected = false
                 pages[targetText].isSelected = true
                 
-                console.log(targetText)
                 tools.updateScreen(subPageDisplaying, newPageData.info.pages,targetText)
                 
             }
@@ -183,14 +195,16 @@ const tools = {
     setupHomeDOMElements:()=>{
         domElements.mainContainer.addEventListener('click', async (e) => {
            
-           
-           let pageToDisplay = e.target.target
-           if (!pageToDisplay) {
-           } else {
-           let subpageToDisplay = pages[pageToDisplay].lastSubPageActive
-           let lastSubPg = pages[pageToDisplay].data.info.pages 
-           tools.updateScreen(subpageToDisplay,lastSubPg,pageToDisplay)
-            }
+            let pageToDisplay = e.target.target
+            if (!pageToDisplay) {
+            } else if (e.target.className == 'compareButton') {
+             compareCharacters(charactersToCompare, domElements, e.target.target, pages.character.data)
+             changeButtonText(charactersToCompare, e.target)
+            } else {
+            let subpageToDisplay = pages[pageToDisplay].lastSubPageActive
+            let lastSubPg = pages[pageToDisplay].data.info.pages
+            tools.updateScreen(subpageToDisplay,lastSubPg,pageToDisplay)
+             }
            
            })
     },
@@ -273,16 +287,18 @@ const tools = {
             case 'episode':
                 const episodeData= await getElementsToDisplay.episode(selectedPage)
                 data =  episodeData.results
-                console.log(data)
                 displayEpisodes(data,domElements)
                 //renderEpisodes()
             break;
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)
                 data =  locationData.results
+<<<<<<< HEAD:mainFuncionando.js
                 domElements.mainContainer.innerHTML=''
                 displayCards(data,domElements)
                 console.log(data)
+=======
+>>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/mainFuncionando.js
             break;
         }
             
@@ -319,7 +335,6 @@ const tools = {
         domElements.body.innerHTML = navBar 
         domElements.body.appendChild(domElements.mainContainer)
         tools.setupNavbarDOMElements();
-        createModal(domElements)
     }
 }
 

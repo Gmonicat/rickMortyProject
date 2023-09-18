@@ -9,6 +9,7 @@ let charactersToCompare = []
 export async function displayCharacters(subpageData,domElements){
     let arrayToDisplay = ""
     domElements.mainContainer.innerHTML = '<div class="charactersContainer"></div>'
+<<<<<<< HEAD:characters.js
     
     
     for (var i = 0; i < subpageData.length;i++){
@@ -25,6 +26,20 @@ export async function displayCharacters(subpageData,domElements){
             arrayToDisplay += `
             <div id="card" class="col s6 m3 l2 offset-s4">
                     ${characterImgDivisor}
+=======
+
+    for (var i = 0; i < subpageData.length;i++){
+        let character = subpageData[i]
+        let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])
+
+        let data = lastSeenEpisode.result
+        arrayToDisplay += ` 
+            <div class="col s3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src='${character.image}' alt='Imagen de ${character.name}' />
+                    </div>
+>>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/characters.js
                     <div class="card-content">
                         <span class=card-title">${character.name}</span>
                         <p>${character.status} - ${character.gender}</p>
