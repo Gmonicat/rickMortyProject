@@ -263,7 +263,7 @@ const tools = {
                 const episodeData= await getElementsToDisplay.episode(selectedPage)
                 data =  episodeData.results
                 console.log(data)
-                renderEpisodes(data)
+                //renderEpisodes(data)
             break;
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)

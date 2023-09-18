@@ -35,7 +35,6 @@ let charTableBody = document.createElement('tbody')
 charTableBody.id = 'charTableBody'
 let charTable = document.getElementById('charTable')
 charTable.appendChild(charTableBody)
-domElements.charContainer.appendChild('a')
 
 }
 

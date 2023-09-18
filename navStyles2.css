@@ -6,7 +6,9 @@ body{
     background-color:rgb(243, 243, 243)
 }
 #main{
-    background-color: rgb(65, 195, 65,0.3);
+    top:1500px;
+    left:0;
+    background-color: #41c3414d;
     width:100%;
 }
 #header{
