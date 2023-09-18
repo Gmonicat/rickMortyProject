@@ -1,6 +1,5 @@
 export let displayHome = (pages,domElements) => {
 
-
     for (let prop in pages) {
 
         let text
