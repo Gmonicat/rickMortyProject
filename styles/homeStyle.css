@@ -6,12 +6,8 @@
 
 #main{
   background-image: url(../media/rickandmorty2.jpeg);
-<<<<<<< HEAD
   background-position-y:top;
   background-position-x:center;
-=======
-  background-position: center;
->>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;

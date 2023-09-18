@@ -1,21 +1,13 @@
-<<<<<<< HEAD:mainFuncionando.js
-//          ------------- Global Variables ---------------          //
-import {navBar} from './navBar.js'
-import { displayHome } from './home.js'
-import { displayCharacters } from './characters.js'
-import {createModal} from './modal.js'
-import { displayEpisodes } from './episode.js'
-import { addCard,displayCards } from './baseCard.js'
-=======
 import { navBar } from '../script/navBar.js'
 import { displayHome } from '../script/home.js'
 import { displayCharacters } from '../script/characters.js'
 import { compareCharacters } from '../script/compare.js'
 import { changeButtonText } from '../script/compare.js'
 import { displayEpisodes } from '../script/episode.js'
-
+import { addCard,displayCards } from './baseCard.js'
+import {createModal} from './modal.js'
 //          ------------- Global Variables ---------------          //
->>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/mainFuncionando.js
+
 
 let pages = {
     home:{},
@@ -293,15 +285,13 @@ const tools = {
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)
                 data =  locationData.results
-<<<<<<< HEAD:mainFuncionando.js
                 domElements.mainContainer.innerHTML=''
                 displayCards(data,domElements)
                 console.log(data)
-=======
->>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/mainFuncionando.js
             break;
         }
             
+        /*>>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/mainFuncionando.js*/
 
 
 

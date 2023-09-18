@@ -234,7 +234,7 @@ body{
 .card3:hover .cardContent3{
     opacity:1;
 }
-*/
+
 @media(max-width:1280px){
     #cardsSection{
         grid-template-columns:1fr 1fr 1fr;

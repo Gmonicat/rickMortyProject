@@ -57,9 +57,9 @@
 
 .cards:hover{
     cursor:pointer;
-    box-shadow: 20px 10px 29px -7px rgba(0, 0, 0, 0.71);
     -webkit-box-shadow: 13px 10px 29px -7px rgba(0, 0, 0, 0.71);
     -moz-box-shadow: 13px 10px 29px -7px rgba(0, 0, 0, 0.71);
+    box-shadow: 20px 10px 29px -7px rgba(0, 0, 0, 0.71);
 }
 
 
