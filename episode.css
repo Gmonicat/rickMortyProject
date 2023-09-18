@@ -17,10 +17,8 @@ button {
 }
 
 .episodeContainer {
-  /* max-width: 100vw !important;
-  width: 100% !important; */
-  width: 1600px;
-  height: 900px;
+  height: 100%  !important;
+  width: 100% !important;
   padding: 20px ;
   margin: 0 auto;
   display: flex;

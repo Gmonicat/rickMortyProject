@@ -18,7 +18,7 @@ export async function displayCharacters(subpageData,domElements){
 
         let data = lastSeenEpisode.result
         console.log(data)
-        arrayToDisplay += `
+        arrayToDisplay += ` 
             <div class="col s3">
                 <div class="card">
                     <div class="card-image">
