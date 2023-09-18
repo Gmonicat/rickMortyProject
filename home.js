@@ -10,12 +10,12 @@ export let displayHome = (pages,domElements) => {
             text = 'All the series character info';
             positionClass = 'col m3 offset-m8 s6 offset-s4'
         } else if (prop == 'episode') {
-            text = 'Lalalalala';
+            text = 'Episodes details!';
             positionClass = 'col m3 offset-m1 s6'
             delayClass = 'delay-1'
         } else if (prop == 'location') {
             text = 'Planets, dimensions and more';
-            positionClass = 'col m3 offset-m5 s6 offset-s5'
+            positionClass = 'col m3 offset-m4 s6 offset-s5'
             delayClass = 'delay-2'  
         } else if (prop == 'home'){
             continue

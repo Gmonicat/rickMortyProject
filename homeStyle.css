@@ -125,5 +125,9 @@ body {
 }
 
 .small-text {
-  font-size: 10px;
+  font-size: 20px;
+}
+
+.clearButton {
+  animation: borderBlink 0.08s ease-in-out infinite alternate;
 }

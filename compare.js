@@ -72,7 +72,7 @@ export function compareCharacters (charactersToCompare, domElements, character, 
     })  
     
     let clearCompareButton = document.createElement('button')
-    clearCompareButton.className = 'btn'
+    clearCompareButton.className = 'btn light-green accent-3 clearButton'
     clearCompareButton.innerText = 'Clear Selection'
     row.appendChild(clearCompareButton)
 

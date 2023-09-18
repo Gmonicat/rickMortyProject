@@ -1,10 +1,11 @@
-//          ------------- Global Variables ---------------          //
-import {navBar} from './navBar.js'
+import { navBar } from './navBar.js'
 import { displayHome } from './home.js'
 import { displayCharacters } from './characters.js'
 import { compareCharacters } from './compare.js'
 import { changeButtonText } from './compare.js'
+import { displayEpisodes } from './episode.js'
 
+//          ------------- Global Variables ---------------          //
 
 let pages = {
     home:{},
