@@ -2,8 +2,8 @@
 import {navBar} from './navBar.js'
 import { displayHome } from './home.js'
 import { displayCharacters } from './characters.js'
-import {createModal} from './modal.js'
-import { displayEpisodes } from './episode.js'
+import { compareCharacters } from './compare.js'
+import { changeButtonText } from './compare.js'
 
 
 let pages = {
@@ -68,6 +68,8 @@ const subPagesOperators = {
     },
     subPagesCap: 6
 }
+
+const charactersToCompare = []
 
 //          ------------- Classes declarations ---------------          //
 
@@ -183,14 +185,16 @@ const tools = {
     setupHomeDOMElements:()=>{
         domElements.mainContainer.addEventListener('click', async (e) => {
            
-           
-           let pageToDisplay = e.target.target
-           if (!pageToDisplay) {
-           } else {
-           let subpageToDisplay = pages[pageToDisplay].lastSubPageActive
-           let lastSubPg = pages[pageToDisplay].data.info.pages 
-           tools.updateScreen(subpageToDisplay,lastSubPg,pageToDisplay)
-            }
+            let pageToDisplay = e.target.target
+            if (!pageToDisplay) {
+            } else if (e.target.className == 'compareButton') {
+             compareCharacters(charactersToCompare, domElements, e.target.target, pages.character.data)
+             changeButtonText(charactersToCompare, e.target)
+            } else {
+            let subpageToDisplay = pages[pageToDisplay].lastSubPageActive
+            let lastSubPg = pages[pageToDisplay].data.info.pages
+            tools.updateScreen(subpageToDisplay,lastSubPg,pageToDisplay)
+             }
            
            })
     },
@@ -309,7 +313,6 @@ const tools = {
         domElements.body.innerHTML = navBar 
         domElements.body.appendChild(domElements.mainContainer)
         tools.setupNavbarDOMElements();
-        createModal(domElements)
     }
 }
 

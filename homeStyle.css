@@ -90,19 +90,9 @@ a:hover {
   animation-delay: 0.5s;
 }
 
-.thumbnailChar {
-  height: 1rem;
-  width: 1rem;
-}
-
-.roundSmallImg {
-  height: 0.3rem;
-  width: 0.3rem;
-  border-radius: 50%;
-}
-
-#charList {
-  padding: 1rem;
+.smallImg {
+  height: 40px;
+  width: 40px;
 }
 
 @keyframes borderBlink {
