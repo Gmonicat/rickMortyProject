@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: beige;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+button {
+  border: initial;
+  background: initial;
+  font: inherit;
+}
+
+.episodeContainer {
+  max-width: 100vw !important;
+  width: 100% !important;
+  padding: 20px ;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 30px;
+  justify-content: center;
+}
+
+.episodeCard {
+  width: 300px;
+  height: 300px;
+  padding-top:  20px;
+  background-color: #D0C4BA;
+  border-radius: 30px;  
+  /* box-shadow: 0 3px 3px rgb(103, 103, 103); */
+  display: flex;
+  flex-direction: column;
+
+  background-image: url('../assets/images/ricky and morty 02.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  
+  transition: box-shadow 0.3s ease;
+}
+
+
+.episodeCard:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid transparent;
+  transition: box-shadow 0.3s ease;
+  z-index: -1;
+}
+
+.episodeCard:hover {
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 1);
+}
+
+.heading {
+padding: 10px;
+margin: 10px 0 20px;
+text-align: center;
+font-weight: bold;
+height: 300px;
+
+}
+
+h4 {
+  font-size: 1.8rem !important;
+}
+
+.dateTime {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.btn {
+  margin-top: auto;
+  /* background-color: rgb(22, 66, 105); */
+  color: WHITE;
+  padding: 10px 10px;
+  border-radius: 1000px;
+  font-size: 12px;
+
+}
+
+
+
+
+.detailsContainer{
+  max-width: 100vw !important;
+  width: 100% !important;
+  /* height: auto; */
+  padding: 30px 20px  30px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 20px;
+  justify-content: center;
+}
+
+.detailsCharacters{
+  max-width: 100vw;
+  /* width: 600px;
+  height: auto; */
+  display: grid;
+  flex-wrap: wrap;
+  
+  padding: 20px;
+  column-gap: 20px;
+  row-gap: 20px;
+
+  background-color: #fff;
+  justify-content: center;
+  border-radius: 30px;  
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Inicialmente, 3 columnas */
+  grid-gap: 5mm; 
+}
+
+.character{
+  width: 200px;
+  display: flex;
+  height: 50px;
+  /* background-color: lightgray; */
+}
+
+.photoCharacter{
+  width: 50px;
+  height: 100%;
+  /* background-color: red; */
+  border-radius: 30px 0   0 30px;
+}
+
+.subTitles{
+  width: 1000px;
+  height: 100%;
+  background-color: greenyellow;
+  border-radius: 0 30px 30px 0 ;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) { /* Cuando el ancho de la pantalla sea igual o menor a 768px */
+  .detailsCharacters {
+      grid-template-columns: repeat(2, 1fr); /* Cambiamos a 2 columnas */
+  }
+}
+
+@media (max-width: 480px) { /* Cuando el ancho de la pantalla sea igual o menor a 480px */
+  .detailsCharacters {
+      grid-template-columns: repeat(1, 1fr); /* Cambiamos a 1 columna */
+  }
+}
+
