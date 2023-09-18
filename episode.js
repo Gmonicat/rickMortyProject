@@ -2,22 +2,27 @@ const dataEpisodes = []
 
 
 export function displayEpisodes(subpageData,domElements){
+
+    console.log(subpageData)
+    console.log(domElements.mainContainer.innerHTML)
+    domElements.mainContainer.innerHTML = "";
     console.log("iniciando display episodes")
     console.log(domElements.mainContainer)
     let arrayToDisplay=""
     for (var i = 0; i < subpageData.length;i++){
         let episode = subpageData[i]
-        arrayToDisplay +=  ` <div class>
+        arrayToDisplay +=  ` <div class = "episodeCard">
         <h4 class="heading">${episode.name}</h4>
         <p class="dateTime">${episode.air_date}</p>
         <h5 class="heading">${episode.episode}</h5>
-        <button class="btn" value="${episode.id}"  >INFO</button>
-    `
+        <button class="btn" value="${episode.id}" >INFO</button>
+        </div>
+        `
 
     }
 
     let elementtoDisplay = document.createElement("div")
-    elementtoDisplay.className = "episodeCard"
+    elementtoDisplay.className = "episodeContainer"
     elementtoDisplay.innerHTML = arrayToDisplay
     domElements.mainContainer.appendChild(elementtoDisplay)
         

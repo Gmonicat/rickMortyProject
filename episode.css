@@ -1,8 +1,8 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+} */
 
 body {
   background-color: beige;
@@ -17,8 +17,10 @@ button {
 }
 
 .episodeContainer {
-  max-width: 100vw !important;
-  width: 100% !important;
+  /* max-width: 100vw !important;
+  width: 100% !important; */
+  width: 1600px;
+  height: 900px;
   padding: 20px ;
   margin: 0 auto;
   display: flex;

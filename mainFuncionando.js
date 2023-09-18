@@ -3,6 +3,8 @@ import {navBar} from './navBar.js'
 import { displayHome } from './home.js'
 import { displayCharacters } from './characters.js'
 import {createModal} from './modal.js'
+import { displayEpisodes } from './episode.js'
+
 
 let pages = {
     home:{},
@@ -264,7 +266,8 @@ const tools = {
                 const episodeData= await getElementsToDisplay.episode(selectedPage)
                 data =  episodeData.results
                 console.log(data)
-                //displayEpisodes(data,domElements)
+                displayEpisodes(data,domElements)
+                //renderEpisodes()
             break;
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)
