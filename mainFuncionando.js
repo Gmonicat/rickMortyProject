@@ -50,6 +50,7 @@ const domElements = {
     //episode dom Els
     episodeContainer: {},
     detailsCharacters: {},
+
 }
 
 const subPagesOperators = {
@@ -260,7 +261,7 @@ const tools = {
                 const episodeData= await getElementsToDisplay.episode(selectedPage)
                 data =  episodeData.results
                 console.log(data)
-                //renderEpisodes(data)
+                //displayEpisodes(data,domElements)
             break;
             case 'location':
                 const locationData= await getElementsToDisplay.location(selectedPage)
