@@ -8,67 +8,46 @@ let charactersToCompare = []
 
 export async function displayCharacters(subpageData,domElements){
     let arrayToDisplay = ""
-    domElements.mainContainer.innerHTML = '<div class="charactersContainer"></div>'
-<<<<<<< HEAD:characters.js
-    
-    
+    domElements.mainContainer.innerHTML = ''
+    console.log(subpageData)
     for (var i = 0; i < subpageData.length;i++){
         let character = subpageData[i]
-        let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])
+        let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])        
         let characterImageUrl = character.image;
         let characterName = character.name
         let data = lastSeenEpisode.result
         let characterImgDivisor
+        let content
+       /* let cardsContainer = document.createElement('div');
+        cardsContainer.className = "cardsContainer";
+        domElements.mainContainer.appendChild(cardsContainer);
 
-        if(i==0 ||i==5|| i==10 || i==15){
-            characterImgDivisor = `<div class="cardImage" style="height:200px;background-image: url('${characterImageUrl}');background-size:cover;background-position:center;margin-left:0">
+        content = `<span style="margin-bot:20px;">${character.name}</span> 
+                    <p>${character.status} - ${character.gender}</p>  
+                    <p>${character.location.name}</p> 
+                    <p>${lastSeenEpisode.name}</p>
+                    <a class = "compareButton" target="${character.id}" style="background:black;height:100%;width:100%;" > Compare Character </a>
+                    `
+
+        addCard(character.name,content,cardsContainer,characterImageUrl)*/
+
+        characterImgDivisor = `<div class="cardImage" style="height:200px;background-image: url('${characterImageUrl}');background-size:cover;background-position:center">
         </div>`
             arrayToDisplay += `
-            <div id="card" class="col s6 m3 l2 offset-s4">
+            <div id="card" class="col s6 m3 l2" style="height:100%;">
                     ${characterImgDivisor}
-=======
-
-    for (var i = 0; i < subpageData.length;i++){
-        let character = subpageData[i]
-        let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])
-
-        let data = lastSeenEpisode.result
-        arrayToDisplay += ` 
-            <div class="col s3">
-                <div class="card">
-                    <div class="card-image">
-                        <img src='${character.image}' alt='Imagen de ${character.name}' />
-                    </div>
->>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175:script/characters.js
-                    <div class="card-content">
+                    <div class="card-content" style="background:red;display:flex;flex-direction:column;justify-content:center;align-items:center;">
                         <span class=card-title">${character.name}</span>
                         <p>${character.status} - ${character.gender}</p>
                         <p>Last known location: ${character.location.name}</p>
                         <p>Last seen in episode: ${lastSeenEpisode.name}</p>
                     </div>
                     <div class="card-action">
-                            <a class = "compareButton" target="${character.id}" >compare characteres</a>
+                            <a class = "compareButton" target="${character.id}" style="background:black;height:100%;width:100%;" > Compare Character </a>
                     </div>
             </div>
         `
-        }else{
-            characterImgDivisor = `<div class="cardImage" style="height:200px;background-image: url('${characterImageUrl}');background-size:cover;background-position:center">
-        </div>`
-            arrayToDisplay += `
-            <div id="card" class="col s6 m3 l2">
-                    ${characterImgDivisor}
-                    <div class="card-content">
-                        <span class=card-title">${character.name}</span>
-                        <p>${character.status} - ${character.gender}</p>
-                        <p>Last known location: ${character.location.name}</p>
-                        <p>Last seen in episode: ${lastSeenEpisode.name}</p>
-                    </div>
-                    <div class="card-action">
-                            <a class = "compareButton" target="${character.id}" >compare characteres</a>
-                    </div>
-            </div>
-        `
-        }
+
 
 
     
@@ -98,4 +77,23 @@ export async function displayCharacters(subpageData,domElements){
             cardImage.style.backgroundImage()
         })
         
+}   
+
+function addCard(cardTitle,cardContent,cardsContainer,image){
+    //style="height:200px;"
+    let cardElement = document.createElement('div');
+    cardElement.className = "col s12 m8 l4 xl";
+    cardElement.classList.add('card2')
+
+    cardElement.innerHTML= `
+    <div class="cardTitle2">
+        <h1 class="textTitle1">${cardTitle}</h1>
+    </div>
+    <div class="cardContent2" style="display:flex;flex-direction:column; ">${cardContent}
+
+    </div>
+    </div>
+`
+
+    cardsContainer.appendChild(cardElement)
 }

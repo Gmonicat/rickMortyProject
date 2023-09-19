@@ -1,7 +1,4 @@
-body{
-    margin:0;
-    background-color:rgb(187, 106, 203)
-}
+
 .header{
     display:flex;
     position:sticky;
@@ -11,10 +8,7 @@ body{
     z-index:-2;
 }
 
-.main{
-    width:100vw;
-    height:85vh;
-}
+
 
 #cardsSection{
     height:100%;

@@ -10,8 +10,8 @@
   background-position-x:center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
   display: flex;
+  margin-top:5px;
   flex-direction: column;
   justify-content: space-evenly;
 }

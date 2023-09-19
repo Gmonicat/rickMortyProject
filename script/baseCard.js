@@ -1,4 +1,4 @@
-function displayCards(subpageData,domElements){
+function displayLocationCards(subpageData,domElements){
     
     
     let cardsContainer = document.createElement('div');
@@ -25,6 +25,32 @@ function displayCards(subpageData,domElements){
     }   
 }
 
+function displayCharacterCards(subpageData,domElements){
+    
+    
+    let cardsContainer = document.createElement('div');
+    cardsContainer.className = "cardsContainer";
+    domElements.mainContainer.appendChild(cardsContainer);
+
+    let title
+    let content1
+    let content2
+    let content3
+    let content4
+    let content
+
+    for (let i = 0; i < subpageData.length;i++){
+        
+        title = subpageData[i].name
+        content1 = subpageData[i].dimension
+        content2= subpageData[i].type
+        content3= subpageData[i].residents
+        content4=subpageData[i].created
+        content = `<p style="margin-bot:20px;">${content1}</p> <p>${content2}</p>  <p>${content3}</p> <p>${content4}</p>`
+        addCard(title,content,cardsContainer)
+
+    }   
+}
 function addCard(cardTitle,cardContent,cardsContainer){
 
     let cardElement = document.createElement('div');
@@ -41,5 +67,5 @@ function addCard(cardTitle,cardContent,cardsContainer){
 
     cardsContainer.appendChild(cardElement)
 }
-export{addCard,displayCards};
+export{addCard,displayLocationCards,displayCharacterCards};
 

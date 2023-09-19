@@ -4,8 +4,8 @@ import { displayCharacters } from '../script/characters.js'
 import { compareCharacters } from '../script/compare.js'
 import { changeButtonText } from '../script/compare.js'
 import { displayEpisodes } from '../script/episode.js'
-import { addCard,displayCards } from './baseCard.js'
-import {createModal} from './modal.js'
+import { addCard,displayLocationCards } from './baseCard.js'
+//import {createModal} from './modal.js'
 //          ------------- Global Variables ---------------          //
 
 
@@ -286,7 +286,7 @@ const tools = {
                 const locationData= await getElementsToDisplay.location(selectedPage)
                 data =  locationData.results
                 domElements.mainContainer.innerHTML=''
-                displayCards(data,domElements)
+                displayLocationCards(data,domElements)
                 console.log(data)
             break;
         }
@@ -333,15 +333,12 @@ const tools = {
 async function initApp() {
     await getData();
     
-    //acá iría un request a los caches para pasar como parámetros iniciales a setUpInitialGlobalVariable
     let pageInitSelected = 'character'
     let subPageInitSelected = 1
-    tools.setupInitialGlobalVariables(pageInitSelected,subPageInitSelected);
-    displayHome(pages,domElements)
-    
+    tools.setupInitialGlobalVariables(pageInitSelected,subPageInitSelected);    
     tools.setupHomeDOMElements()
-    //tools.updateScreen(subPageInitSelected,39,pageInitSelected)
-    //
+    tools.updateScreen(subPageInitSelected,39,pageInitSelected)
+
 }
 
 initApp()

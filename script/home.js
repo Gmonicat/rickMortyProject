@@ -1,4 +1,4 @@
-export let displayHome = (pages,domElements) => {
+ let displayHome = (pages,domElements) => {
 
     for (let prop in pages) {
 
@@ -46,3 +46,5 @@ export let displayHome = (pages,domElements) => {
         domElements.mainContainer.appendChild(row);
     }
 }
+
+export {displayHome}

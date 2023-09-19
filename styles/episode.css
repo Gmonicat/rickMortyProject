@@ -4,10 +4,7 @@
   box-sizing: border-box;
 } */
 
-body {
-  background-color: beige;
-  font-family: 'Roboto', sans-serif;
-}
+
 
 
 button {
@@ -40,11 +37,7 @@ button {
   display: flex;
   flex-direction: column;
 
-<<<<<<< HEAD
   background-image: url('../media/ricky\ and\ morty\ 02.jpg');
-=======
-  background-image: url('../media/ricky and morty 02.jpg');
->>>>>>> a6f5a1db34ea6d790060054dfda72f86c0009175
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
