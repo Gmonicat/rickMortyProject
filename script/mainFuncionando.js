@@ -5,11 +5,12 @@ import { compareCharacters } from '../script/compare.js'
 import { changeButtonText } from '../script/compare.js'
 import { displayEpisodes } from '../script/episode.js'
 import { addCard,displayLocationCards } from './baseCard.js'
+import {search} from './search.js'
 //import {createModal} from './modal.js'
 //          ------------- Global Variables ---------------          //
 
 
-let pages = {
+let pagesDataContainer = {
     home:{},
     character: {},
     location: {},
@@ -17,7 +18,7 @@ let pages = {
 }
 let getElementsToDisplay={
     character: async (actualPage)=>{
-        let subPageToDisplay = pages[actualPage].lastSubPageActive
+        let subPageToDisplay = pagesDataContainer[actualPage].lastSubPageActive
         
         const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${subPageToDisplay}`)
         const json = await response.json()
@@ -26,7 +27,7 @@ let getElementsToDisplay={
 
     location:async (actualPage)=>{
 
-        let subPageToDisplay = pages[actualPage].lastSubPageActive
+        let subPageToDisplay = pagesDataContainer[actualPage].lastSubPageActive
         const response = await fetch(`https://rickandmortyapi.com/api/location?page=${subPageToDisplay}`)
         const json = await response.json()
         //const result = resolvedObject[]
@@ -34,7 +35,7 @@ let getElementsToDisplay={
     },
 
     episode: async (actualPage)=>{
-        let subPageToDisplay = pages[actualPage].lastSubPageActive
+        let subPageToDisplay = pagesDataContainer[actualPage].lastSubPageActive
         const response = await fetch(`https://rickandmortyapi.com/api/episode?page=${subPageToDisplay}`)
         const json = await response.json()
         return json
@@ -62,10 +63,10 @@ const domElements = {
 
 const subPagesOperators = {
     actualPage: () => {
-        for (let element in pages) {
-            if (pages[element].isSelected) {
+        for (let element in pagesDataContainer) {
+            if (pagesDataContainer[element].isSelected) {
                 
-                return pages[element].name;;
+                return pagesDataContainer[element].name;;
             }
         }
     },
@@ -77,7 +78,7 @@ const charactersToCompare = []
 //          ------------- Classes declarations ---------------          //
 
 class page {
-    constructor(name, isSelected, data, lastSubPageActive) {
+    constructor(name, isSelected, data, lastSubPageActive,lastSubPage) {
             this.name = name,
             this.isSelected = isSelected,
             this.data = data,
@@ -88,7 +89,6 @@ class page {
     }
     set lastSubPageActive(value) {
         let pagesData = this.data.info.pages
-
         if (typeof value === 'number' && value < 1) {
             this._lastSubPageActive = 1;
         } else if (typeof value === 'number' && value > pagesData - 1) {
@@ -103,18 +103,18 @@ class page {
 //          ------------- Initial functions ---------------          //
 async function getData() {
 
-    pages.home = new page('home', false, [], 0)
+    pagesDataContainer.home = new page('home', false, [], 0)
     await fetch("https://rickandmortyapi.com/api/character")
         .then(response => response.json())
-        .then(json => pages.character = new page('character', false, json, 1))
+        .then(json => pagesDataContainer.character = new page('character', false, json, 1))
 
     await fetch("https://rickandmortyapi.com/api/location")
         .then(response => response.json())
-        .then(json => pages.location = new page('location', false, json, 1))
+        .then(json => pagesDataContainer.location = new page('location', false, json, 1))
 
     await fetch("https://rickandmortyapi.com/api/episode")
         .then(response => response.json())
-        .then(json => pages.episode = new page('episode', false, json, 1))
+        .then(json => pagesDataContainer.episode = new page('episode', false, json, 1))
 }
 
 //          ------------- Tools ---------------          //
@@ -136,7 +136,7 @@ const tools = {
         domElements.searchInput =  document.getElementsByClassName('baseInput')
 
         domElements.subPagesOperatorContainer[0].addEventListener('click', (e) => {
-            let actualPage = pages[subPagesOperators.actualPage()]
+            let actualPage = pagesDataContainer[subPagesOperators.actualPage()]
             let actualPageData = actualPage.data;
             let totalSubPages = actualPageData.info.pages
             let selectedSubPage = parseInt(e.target.text);
@@ -171,15 +171,18 @@ const tools = {
 
             if (targetText) {
         
-                let newPageData = pages[targetText].data
-                let subPageDisplaying = pages[targetText].lastSubPageActive
-                pages[actualPage].isSelected = false
-                pages[targetText].isSelected = true
+                let newPageData = pagesDataContainer[targetText].data
+                let subPageDisplaying = pagesDataContainer[targetText].lastSubPageActive
+                pagesDataContainer[actualPage].isSelected = false
+                pagesDataContainer[targetText].isSelected = true
                 
                 tools.updateScreen(subPageDisplaying, newPageData.info.pages,targetText)
                 
             }
         
+        })
+        domElements.searchInput[0].addEventListener('keyup',()=>{
+            search(domElements.searchInput[0].value,pagesDataContainer)
         })
         }
         
@@ -190,11 +193,11 @@ const tools = {
             let pageToDisplay = e.target.target
             if (!pageToDisplay) {
             } else if (e.target.className == 'compareButton') {
-             compareCharacters(charactersToCompare, domElements, e.target.target, pages.character.data)
+             compareCharacters(charactersToCompare, domElements, e.target.target, pagesDataContainer.character.data)
              changeButtonText(charactersToCompare, e.target)
             } else {
-            let subpageToDisplay = pages[pageToDisplay].lastSubPageActive
-            let lastSubPg = pages[pageToDisplay].data.info.pages
+            let subpageToDisplay = pagesDataContainer[pageToDisplay].lastSubPageActive
+            let lastSubPg = pagesDataContainer[pageToDisplay].data.info.pages
             tools.updateScreen(subpageToDisplay,lastSubPg,pageToDisplay)
              }
            
@@ -202,11 +205,11 @@ const tools = {
     },
   
     setupInitialGlobalVariables: (title, lastSubPageSelected) => {
-        for (let page in pages) {
+        for (let page in pagesDataContainer) {
             if (page == title) {
-                pages[page].isSelected = true
+                pagesDataContainer[page].isSelected = true
                 if (page != 'home') {
-                pages[page].lastSubPageActive = lastSubPageSelected
+                pagesDataContainer[page].lastSubPageActive = lastSubPageSelected
                 }  
             }
         }
@@ -265,7 +268,7 @@ const tools = {
     },
 
     displayMainPage: async (selectedPage) => {
-        let subPage = pages[selectedPage].lastSubPageActive
+        let subPage = pagesDataContainer[selectedPage].lastSubPageActive
         let data
         domElements.mainContainer.classList.remove('x-space-evenly')
         switch (selectedPage){
@@ -316,7 +319,7 @@ const tools = {
             tools.displaySubPages(selectedSubPage,lastSubPageAvailable)
         }else{
             console.log("exitos")
-            displayHome(pages,domElements)
+            displayHome(pagesDataContainer,domElements)
             tools.setupHomeDOMElements()
         }
     },
@@ -338,7 +341,7 @@ async function initApp() {
     tools.setupInitialGlobalVariables(pageInitSelected,subPageInitSelected);    
     tools.setupHomeDOMElements()
     tools.updateScreen(subPageInitSelected,39,pageInitSelected)
-
+    search(domElements)
 }
 
 initApp()

@@ -148,7 +148,7 @@
    opacity:1;
 }
 /* ----------------------------------------------------------------- */
-/*.card2{
+.card2{
     position:relative;
     align-items: center;
     text-align:center;
@@ -188,7 +188,7 @@
 }
 
 /* -------------------------------------------------------------- */
-
+/*
 .card3{
     position:relative;
     align-items: center;

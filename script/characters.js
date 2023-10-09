@@ -9,7 +9,6 @@ let charactersToCompare = []
 export async function displayCharacters(subpageData,domElements){
     let arrayToDisplay = ""
     domElements.mainContainer.innerHTML = ''
-    console.log(subpageData)
     for (var i = 0; i < subpageData.length;i++){
         let character = subpageData[i]
         let lastSeenEpisode = await getLastSeenEp(character.episode[character.episode.length-1])        
@@ -71,7 +70,6 @@ export async function displayCharacters(subpageData,domElements){
     
     domElements.mainContainer.appendChild(elementtoDisplay)
     let cardImage = document.getElementsByClassName('card-image')
-        console.log(cardImage)
         
         cardImage.forEach((img)=>{
             cardImage.style.backgroundImage()

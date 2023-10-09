@@ -1,6 +1,5 @@
 body{
     margin:0;
-    height:100vh;
     font-size:medium;
     font-family:Arial, Helvetica, sans-serif;
     background-color:rgb(243, 243, 243)
@@ -72,8 +71,7 @@ body{
     justify-content:center;
     align-items:center;
     height:100%;
-    width:60%;
-    margin-left:auto;
+    width:69%;
     box-sizing:border-box;
     padding:4px;
 }
@@ -264,7 +262,15 @@ body{
     }
 }
 @media(max-width:600px){
-
+    .pageButtons{
+        width:120px;
+    }
+    .subPagesContainer{
+        width:
+    }
+    .subPages{
+        padding:25px;
+    }
 }
 
 @keyframes searchAnimation {
